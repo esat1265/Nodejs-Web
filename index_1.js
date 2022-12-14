@@ -6,9 +6,9 @@ app.use(express.static('public'));
 app.use(express.static('node_modules')); 
 
 const data = [
-    {id:1, name:"iphone 14", price:30000,isActive:true,imageUrl:"1.jpeg"},
-    {id:2, name:"iphone 15", price:40000,isActive:false,imageUrl:"2.jpeg"},
-    {id:3, name:"iphone 16", price:50000,isActive:true,imageUrl:"3.jpeg"},
+    {id:1, name:"iphone 14", price:30000,isActive:true,isHome:true,imageUrl:"1.jpeg"},
+    {id:2, name:"iphone 15", price:40000,isActive:false,isHome:false,imageUrl:"2.jpeg"},
+    {id:3, name:"iphone 16", price:50000,isActive:true,isHome:true,imageUrl:"3.jpeg"},
 ]
 /**
  * //routes with using express route
@@ -25,7 +25,7 @@ app.use("/products", function(req,res){
 app.use("/", function(req,res){
     res.send("anasayfa")
 });
- * 
+ *  
  */
 
 // Now we are using ejs for render files
@@ -43,7 +43,9 @@ app.use("/products", function(req,res){
 });
 
 app.use("/", function(req,res){
-    res.render("index")
+    res.render("index",{
+        urunler: data
+    })
 });
 
 
